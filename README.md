@@ -1,73 +1,88 @@
-# React + TypeScript + Vite
+# GPU-NET-ASSIGNMENT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend implementation of the GPU.Net design challenge — built with React, TypeScript, Tailwind CSS, and RainbowKit to enable a wallet connection.
 
-Currently, two official plugins are available:
+[Live Demo](https://gpu-net-assignment-jm6p7czmf-mihirrajchowdhurys-projects.vercel.app/)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧾 About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project was built to meet the assignment requirements: recreate the Figma design **pixel-perfectly**, ensure responsiveness, implement wallet connection, and maintain clean, modular code.  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Pixel-perfect UI matching the Figma design  
+- Fully responsive across desktop and mobile  
+- Wallet connection via **RainbowKit**  
+- Interactive UI elements (buttons, toggles, etc.)  
+- State management using React Context / hooks  
+- Optimized components (memoization, lazy loading where suitable)  
+- Deployed publicly on Vercel  
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- React + Vite  
+- TypeScript  
+- Tailwind CSS  
+- RainbowKit (Wallet connection)  
+- HTML / CSS / JavaScript  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📁 Folder Structure
+
+src/
+├── assets/ # Images, icons, static files
+├── components/ # Reusable UI components
+├── context/ # React Context for global state
+├── hooks/ # Custom hooks
+├── pages/ # Routable / top-level pages
+├── utils/ # Helper / utility functions
+├── App.tsx
+└── main.tsx
+
+
+---
+
+## 🚀 Getting Started — Local Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/MihirRajChowdhury/GPU-NET-ASSIGNMENT.git
+   cd GPU-NET-ASSIGNMENT
+Install dependencies
+
+npm install
+# or
+yarn install
+Run development server
+
+
+npm run dev
+Build for production
+
+npm run build
+Preview production build locally
+
+npm run preview
+
+⚙ Implementation Notes & Decisions
+The hero section uses a responsive clamp() font sizing combined with Tailwind’s utility classes to prevent overflow.
+
+Grid layout is set up with explicit column percentages to ensure the hero text and the right column never overlap.
+
+Interactive tabs/buttons use conditional Tailwind classes to switch between active and inactive states.
+
+State is managed via React Context (or hooks) to allow global state sharing (e.g., current tab, wallet status).
+
+Components are kept small (≤ ~200 lines), modular, and memoized where needed to avoid unnecessary re-renders.
+
+Lazy loading (React’s lazy + Suspense) is used for non-critical sections where applicable.
+
+📜 License
+This project is for demonstration and assignment purposes. Feel free to examine and learn — if you reuse code, please attribute appropriately.
