@@ -20,19 +20,19 @@ const Home: React.FC = () => {
             <Sidebar />
             
             <main className="pt-16 pl-0 md:pl-56 pr-0 xl:pr-80 transition-all duration-300">
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Hero Section */}
                 <section className="mb-8">
-                  <div className="flex items-start justify-between">
+                  <div className="flex flex-col md:flex-row items-start justify-between">
                     <div className="flex-1">
-                      <h1 className="text-5xl md:text-6xl font-bold mb-4">
-                        <span className="text-orange-500">One</span>
+                      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+                        <span className="text-orange-500">All in</span>
                         <br />
-                        <span className="text-white">GPU</span>
+                        <span className="text-white">One</span>
                         <br />
-                        <span className="text-orange-500">Ecosystem</span>
+                        <span className="text-orange-500">GPU</span>
                         <br />
-                        <span className="text-white">Supercluster</span>
+                        <span className="text-white">Ecosystem</span>
                       </h1>
                     </div>
                     <div className="hidden lg:block">
@@ -48,7 +48,7 @@ const Home: React.FC = () => {
                       <span className="text-orange-500 font-semibold">400K $GPUs</span>
                     </p>
                     
-                    <div className="flex items-center space-x-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                       <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium transition-all shadow-lg shadow-orange-500/20">
                         Try Astra
                       </button>

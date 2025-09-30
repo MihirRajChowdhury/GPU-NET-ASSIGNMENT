@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import UIContext from '../../context/UIContext';
 import {
   FiCpu, FiMessageCircle, FiGlobe,
-  FiTarget, FiLayers, 
+  FiTarget, FiLayers, FiChevronRight
 } from "react-icons/fi";
 import { FaTelegramPlane, FaDiscord, FaTwitter, FaInstagram } from "react-icons/fa";
 
@@ -13,7 +13,9 @@ const Sidebar: React.FC = () => {
   };
 
   const [activeItem, setActiveItem] = useState('dApp');
-  const [expandedMenus, setExpandedMenus] = useState<{ [key: string]: boolean }>({});
+  const [expandedMenus, setExpandedMenus] = useState<{ [key: string]: boolean }>({
+    dApp: true // Set dApp to be expanded by default
+  });
 
   const toggleExpand = (item: string) => {
     setExpandedMenus((prev) => ({
@@ -44,7 +46,7 @@ const Sidebar: React.FC = () => {
       {/* Sidebar */}
       <aside 
         className={`
-          fixed top-0 left-0 h-screen bg-black border-r border-gray-800 z-50
+          fixed top-0 left-0 h-screen bg-[#0A0A0A] border-r border-gray-800 z-50
           transition-transform duration-300 ease-in-out
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
           w-64 md:w-56 flex flex-col
@@ -64,23 +66,23 @@ const Sidebar: React.FC = () => {
         <div className="px-4 py-6 border-b border-gray-800 flex items-center justify-between">
           <div>
             <div className="text-gray-400 text-sm">Wallet Balance</div>
-            <div className="flex items-baseline space-x-2 mt-1">
-              <span className="text-gray-300 text-lg">Ξ</span>
-              <span className="text-white text-2xl font-bold">3900</span>
-              <span className="text-gray-400 text-sm">.98</span>
+            <div className="flex items-baseline mt-1">
+              <span className="text-white text-lg font-medium">Ξ</span>
+              <span className="text-white text-2xl font-bold">39</span>
+              <span className="text-gray-500 text-sm">/00</span>
+              <span className="text-gray-500 text-sm">.98</span>
             </div>
           </div>
           {/* Plus Button */}
           <button 
             className="
-              w-5 h-5 rounded-full flex items-center justify-center 
-              bg-white text-black 
-              hover:bg-gray-100 hover:cursor-pointer
+              w-6 h-6 rounded-full flex items-center justify-center 
+              bg-gray-800 text-white border border-gray-700
+              hover:bg-gray-700 hover:cursor-pointer
             "
           >
             <span className="text-xs font-bold">+</span>
           </button>
-
         </div>
 
         {/* Navigation */}
@@ -90,35 +92,42 @@ const Sidebar: React.FC = () => {
             const isExpanded = expandedMenus[item.name];
 
             return (
-              <div key={item.name}>
+              <div key={item.name} className="mb-1">
                 <button
                   onClick={() => {
                     setActiveItem(item.name);
                     toggleExpand(item.name);
                   }}
                   className={`
-                    w-full flex items-center space-x-3 px-3 py-2 mb-1 relative
+                    w-full flex items-center justify-between px-4 py-3 relative
                     text-sm font-medium transition-colors duration-200 cursor-pointer
                     ${isActive 
-                      ? 'text-white bg-gray-900' 
-                      : 'text-gray-400 hover:text-white hover:bg-gray-900'
+                      ? 'text-white bg-[#111111]' 
+                      : 'text-gray-400 hover:text-white hover:bg-[#111111]'
                     }
                   `}
                 >
-                  {/* Left Line Indicator */}
-                  <span
-                    className={`
-                      absolute left-0 top-0 bottom-0 w-1
-                      ${isActive ? 'bg-orange-500' : 'bg-black'}
-                    `}
+                  <div className="flex items-center space-x-3">
+                    {/* Left Line Indicator */}
+                    <span
+                      className={`
+                        absolute left-0 top-0 bottom-0 w-1
+                        ${isActive ? 'bg-orange-500' : 'bg-transparent'}
+                      `}
+                    />
+                    <span className="text-lg">{item.icon}</span>
+                    <span>{item.name}</span>
+                  </div>
+                  
+                  {/* Chevron icon */}
+                  <FiChevronRight 
+                    className={`transition-transform duration-200 ${isExpanded ? 'transform rotate-90' : ''}`} 
                   />
-                  <span className="text-lg">{item.icon}</span>
-                  <span>{item.name}</span>
                 </button>
 
                 {/* Children Items */}
                 {isExpanded && item.children && (
-                  <div className="ml-8">
+                  <div className="ml-10 mt-1">
                     {item.children.map((child) => (
                       <button
                         key={child}
@@ -127,8 +136,8 @@ const Sidebar: React.FC = () => {
                           w-full flex items-center px-3 py-2 mb-1 relative
                           text-sm transition-colors duration-200 cursor-pointer
                           ${activeItem === child
-                            ? 'text-white bg-gray-800'
-                            : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                            ? 'text-white'
+                            : 'text-gray-400 hover:text-white'
                           }
                         `}
                       >
@@ -136,7 +145,7 @@ const Sidebar: React.FC = () => {
                         <span
                           className={`
                             absolute left-0 top-0 bottom-0 w-1
-                            ${activeItem === child ? 'bg-orange-500' : 'bg-black'}
+                            ${activeItem === child ? 'bg-orange-500' : 'bg-transparent'}
                           `}
                         />
                         {child}
@@ -148,6 +157,22 @@ const Sidebar: React.FC = () => {
             );
           })}
         </nav>
+        
+        {/* Social Media Links */}
+        <div className="px-4 py-4 border-t border-gray-800 flex items-center justify-between">
+          <a href="#" className="text-gray-400 hover:text-white">
+            <FaDiscord className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-white">
+            <FaTwitter className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-white">
+            <FaTelegramPlane className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-white">
+            <FaInstagram className="w-5 h-5" />
+          </a>
+        </div>
 
         {/* Social Icons */}
         <div className="flex space-x-6 justify-center mb-3">
