@@ -158,21 +158,6 @@ const Sidebar: React.FC = () => {
           })}
         </nav>
         
-        {/* Social Media Links */}
-        <div className="px-4 py-4 border-t border-gray-800 flex items-center justify-between">
-          <a href="#" className="text-gray-400 hover:text-white">
-            <FaDiscord className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white">
-            <FaTwitter className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white">
-            <FaTelegramPlane className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white">
-            <FaInstagram className="w-5 h-5" />
-          </a>
-        </div>
 
         {/* Social Icons */}
         <div className="flex space-x-6 justify-center mb-3">

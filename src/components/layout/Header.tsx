@@ -1,7 +1,7 @@
 // src/components/layout/Header.tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import React from 'react';
-import { FiRss } from 'react-icons/fi';
+
 
 const Header: React.FC = () => {
   return (
@@ -27,19 +27,6 @@ const Header: React.FC = () => {
 
         {/* Wallet & Profile Section */}
         <div className="flex items-center space-x-4">
-          {/* Wallet Balance */}
-          <div className="flex items-center space-x-2 bg-[#111111] px-4 py-2 rounded-lg border border-gray-800">
-            <div className="flex items-center">
-              <span className="text-white font-semibold">Wallet Balance:</span>
-              <span className="text-white font-semibold ml-1">Ξ</span>
-              <span className="text-white font-semibold">39</span>
-              <span className="text-gray-500 text-sm">/00</span>
-              <span className="text-gray-500 text-sm">.98</span>
-            </div>
-            <button className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
-              <span className="text-white text-xs">+</span>
-            </button>
-          </div>
 
           {/* Connect Button */}
           <ConnectButton.Custom>
@@ -104,11 +91,7 @@ const Header: React.FC = () => {
             }}
           </ConnectButton.Custom>
 
-          {/* Feed Button */}
-          <button className="flex items-center space-x-1 bg-[#111111] border border-gray-800 rounded-lg px-3 py-2 hover:bg-gray-800 transition-colors">
-            <FiRss className="text-white" />
-            <span className="text-white">Feed</span>
-          </button>
+ 
 
           {/* Profile */}
           <button className="w-9 h-9 bg-gray-700 rounded-full flex items-center justify-center overflow-hidden hover:ring-2 hover:ring-orange-500 transition-all">
