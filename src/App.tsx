@@ -1,12 +1,14 @@
-
+// src/App.tsx
+import React from 'react';
+import Home from './pages/Home';
+import './styles/index.css';
 
 function App() {
-
   return (
-    <>
-    App
-   </>
-  )
+    <div className="App">
+      <Home />
+    </div>
+  );
 }
 
-export default App
+export default App;

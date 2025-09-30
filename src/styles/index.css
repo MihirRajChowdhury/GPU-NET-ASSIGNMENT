@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+/* Add custom styles here if needed */
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 15s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+}
